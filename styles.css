@@ -358,7 +358,10 @@ body::before {
   color: var(--muted);
 }
 
-/*.project-grid {
+/* ==========================================================================
+   8. PROJECTS SECTION & IMAGE LAYOUT (UPDATED FOR SQUARE LOGOS)
+   ========================================================================== */
+.project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.6rem;
@@ -379,27 +382,22 @@ body::before {
 .project-image {
   position: relative;
   width: 100%;
-  /* Force a strict aspect-ratio instead of a fixed height. 
-     This ensures a perfect horizontal banner shape that scales beautifully! */
-  aspect-ratio: 16 / 10; 
-  flex-shrink: 0; /* CRITICAL: Prevents long text from squeezing the image container */
+  height: 220px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.2); 
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; 
+  padding: 1.5rem; /* Prevents square asset links from hitting edge layout frames */
 }
 
 .project-image img {
-  /* Using max limits forces the square 500x500 logo to comfortably scale 
-     down and fit inside the rectangle without dropping past the edges */
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
-  object-fit: contain; 
+  object-fit: contain; /* Forces browser to maintain native 500x500 box constraints */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
