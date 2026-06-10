@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & VARIABLES
+   ========================================================================== */
 :root {
   color-scheme: dark;
   --bg: #0b1118;
@@ -56,6 +59,9 @@ body::before {
   z-index: 1;
 }
 
+/* ==========================================================================
+   2. NAVIGATION HEADER
+   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -101,6 +107,9 @@ body::before {
   transform: translateY(-1px);
 }
 
+/* ==========================================================================
+   3. BUTTONS
+   ========================================================================== */
 .button {
   border-radius: 999px;
   border: none;
@@ -135,8 +144,13 @@ body::before {
   background: rgba(49, 196, 255, 0.12);
   color: var(--text);
   border: 1px solid rgba(49, 196, 255, 0.16);
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
 .hero-section {
   padding: 5rem 0 4rem;
 }
@@ -249,6 +263,9 @@ body::before {
   background: linear-gradient(180deg, rgba(44, 168, 255, 0.14), rgba(24, 33, 44, 0.84));
 }
 
+/* ==========================================================================
+   5. COMMON SECTION LAYOUTS
+   ========================================================================== */
 .section {
   padding: 5rem 0;
 }
@@ -276,6 +293,9 @@ body::before {
   gap: 2rem;
 }
 
+/* ==========================================================================
+   6. ABOUT & EDUCATION
+   ========================================================================== */
 .about-copy p {
   color: var(--muted);
   max-width: 760px;
@@ -306,6 +326,9 @@ body::before {
   color: var(--muted);
 }
 
+/* ==========================================================================
+   7. SKILLS SECTION
+   ========================================================================== */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -335,6 +358,9 @@ body::before {
   color: var(--muted);
 }
 
+/* ==========================================================================
+   8. PROJECTS SECTION & IMAGE HOVER EFFECTS
+   ========================================================================== */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -345,18 +371,56 @@ body::before {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
-  padding: 1.8rem;
+  padding: 0; /* Changed to 0 to let full-bleed image container touch corners */
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  overflow: hidden;
 }
 
-.project-meta {
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background-color: var(--surface-strong);
+  border-bottom: 1px solid var(--border);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Inject structural margins back into the typography content */
+.project-card .project-meta,
+.project-card p,
+.project-card .project-tags,
+.project-card ul,
+.project-card .button-tertiary {
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+}
+
+.project-card .project-meta {
+  margin-top: 1.8rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.project-card .button-tertiary {
+  margin-bottom: 1.8rem;
+  margin-top: auto; /* Aligns project action links perfectly on row lines */
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.04);
 }
 
 .project-meta span {
@@ -400,7 +464,10 @@ body::before {
   margin-bottom: 0.8rem;
 }
 
-.experience-section .timeline {
+/* ==========================================================================
+   9. EXPERIENCE (TIMELINE)
+   ========================================================================== */
+experience-section .timeline {
   display: grid;
   gap: 1.6rem;
 }
@@ -438,6 +505,9 @@ body::before {
   margin-bottom: 0.75rem;
 }
 
+/* ==========================================================================
+   10. CERTIFICATIONS
+   ========================================================================== */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -463,6 +533,9 @@ body::before {
   font-size: 0.95rem;
 }
 
+/* ==========================================================================
+   11. CONTACT & FORMS
+   ========================================================================== */
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -508,7 +581,7 @@ body::before {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  padding: 1rem 1rem;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   font: inherit;
@@ -522,6 +595,9 @@ body::before {
   box-shadow: 0 0 0 4px rgba(49, 196, 255, 0.1);
 }
 
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
 .site-footer {
   padding: 2rem 0 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -535,6 +611,9 @@ body::before {
   color: var(--muted);
 }
 
+/* ==========================================================================
+   13. MEDIA RESPONSIVE RESPONSES
+   ========================================================================== */
 @media (max-width: 960px) {
   .hero-grid,
   .contact-grid,
@@ -570,7 +649,8 @@ body::before {
     align-items: stretch;
   }
 
-  .button,
+  /* Target main elements specifically to prevent inner card buttons from breaking layout */
+  .hero-actions .button,
   .social-links a {
     width: 100%;
   }
