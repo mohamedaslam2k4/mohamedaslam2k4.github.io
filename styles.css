@@ -359,7 +359,7 @@ body::before {
 }
 
 /* ==========================================================================
-   8. PROJECTS SECTION & IMAGE HOVER EFFECTS
+   8. PROJECTS SECTION & IMAGE LAYOUT (UPDATED FOR SQUARE LOGOS)
    ========================================================================== */
 .project-grid {
   display: grid;
@@ -371,7 +371,7 @@ body::before {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
-  padding: 0; /* Changed to 0 to let full-bleed image container touch corners */
+  padding: 0; 
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
@@ -382,28 +382,25 @@ body::before {
 .project-image {
   position: relative;
   width: 100%;
-  height: 210px;
+  height: 220px;
   overflow: hidden;
-  /* Adds a subtle dark background so images with transparent or white 
-     edges blend beautifully into your theme */
   background-color: rgba(0, 0, 0, 0.2); 
   border-bottom: 1px solid var(--border);
-  
-  /* Centers the image perfectly horizontally and vertically */
-  display: grid;
-  place-items: center; 
-  padding: 1rem; /* Adds a breathing room border around your image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem; /* Prevents square asset links from hitting edge layout frames */
 }
 
 .project-image img {
-  width: 100%;
-  height: 100%;
-  /* This forces the browser to scale down the image so the 
-     entire picture fits inside the box without being cropped */
-  object-fit: contain; 
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Forces browser to maintain native 500x500 box constraints */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-/* Inject structural margins back into the typography content */
+
 .project-card .project-meta,
 .project-card p,
 .project-card .project-tags,
@@ -423,7 +420,7 @@ body::before {
 
 .project-card .button-tertiary {
   margin-bottom: 1.8rem;
-  margin-top: auto; /* Aligns project action links perfectly on row lines */
+  margin-top: auto; 
 }
 
 .project-card:hover .project-image img {
@@ -474,7 +471,7 @@ body::before {
 /* ==========================================================================
    9. EXPERIENCE (TIMELINE)
    ========================================================================== */
-experience-section .timeline {
+.experience-section .timeline {
   display: grid;
   gap: 1.6rem;
 }
@@ -656,7 +653,6 @@ experience-section .timeline {
     align-items: stretch;
   }
 
-  /* Target main elements specifically to prevent inner card buttons from breaking layout */
   .hero-actions .button,
   .social-links a {
     width: 100%;
